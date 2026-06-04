@@ -8,7 +8,8 @@
       "Bash(npm install *)",
       "Bash(npm test *)",
       "Bash(npm run *)",
-      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\)[0]; c=d['Config']; print\\('Labels:', c.get\\('Labels'\\)\\); print\\('Env:', c.get\\('Env'\\)\\); print\\('Cmd:', c.get\\('Cmd'\\)\\); print\\('ExposedPorts:', c.get\\('ExposedPorts'\\)\\); print\\('Healthcheck:', d.get\\('Config',{}\\).get\\('Healthcheck'\\)\\)\")"
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\)[0]; c=d['Config']; print\\('Labels:', c.get\\('Labels'\\)\\); print\\('Env:', c.get\\('Env'\\)\\); print\\('Cmd:', c.get\\('Cmd'\\)\\); print\\('ExposedPorts:', c.get\\('ExposedPorts'\\)\\); print\\('Healthcheck:', d.get\\('Config',{}\\).get\\('Healthcheck'\\)\\)\")",
+      "Bash(git -C /Users/walid/Desktop/Tp-final-devops tag)"
     ]
   }
 }
