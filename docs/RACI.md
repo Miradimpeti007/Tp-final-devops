@@ -10,8 +10,11 @@
 | Incident Manager | Walid |
 | Product Owner | Walid + Binôme |
 
+<<<<<<< HEAD
 > En équipe de 2, chaque personne cumule plusieurs rôles.
 
+=======
+>>>>>>> origin/develop
 ## Matrice RACI
 
 | Activité | PO | API | Frontend | DevOps | DBA | QA | Incident Manager |
@@ -29,7 +32,11 @@
 | Valider les tests après rollback | C | C | I | C | I | **R/A** | I |
 | Rédiger le rapport d'incident | C | C | C | C | C | C | **R/A** |
 
+<<<<<<< HEAD
 ## Légende
+=======
+## Légende RACI
+>>>>>>> origin/develop
 
 | Lettre | Signification |
 |---|---|
@@ -46,6 +53,11 @@
 | 10:08 | Analyse logs API | DevOps | Erreur route products |
 | 10:12 | Vérification PostgreSQL | DBA | Données présentes |
 | 10:15 | Décision rollback | PO + Incident Manager | Rollback validé |
+<<<<<<< HEAD
 | 10:18 | Exécution `./scripts/rollback.sh v1.0.0` | DevOps | API redémarrée |
 | 10:22 | Smoke tests post-rollback | QA | Tests verts |
+=======
+| 10:18 | Exécution rollback.sh v1.0.0 | DevOps | API redémarrée |
+| 10:22 | Smoke tests | QA | Tests verts |
+>>>>>>> origin/develop
 | 10:25 | Communication finale | Incident Manager | Incident clos |

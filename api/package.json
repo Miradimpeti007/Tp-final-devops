@@ -29,7 +29,12 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/server.js",
+<<<<<<< HEAD
       "!src/db.js"
+=======
+      "!src/db.js",
+      "!src/middleware/logger.js"
+>>>>>>> origin/develop
     ],
     "coverageThreshold": {
       "global": {

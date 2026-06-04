@@ -10,6 +10,7 @@
 
 ## Commandes de déploiement
 
+<<<<<<< HEAD
 ### Dev
 ```bash
 docker compose up -d --build
@@ -22,11 +23,22 @@ docker compose -f docker-compose.yml -f docker-compose.staging.yml up -d --build
 
 ### Production simulée
 ```bash
+=======
+```bash
+# Dev
+docker compose up -d --build
+
+# Staging
+docker compose -f docker-compose.yml -f docker-compose.staging.yml up -d --build
+
+# Production simulée
+>>>>>>> origin/develop
 APP_VERSION=v1.0.0 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 ```
 
 ## Plan de retour arrière
 
+<<<<<<< HEAD
 Si une version cassée est déployée :
 
 ```bash
@@ -44,6 +56,16 @@ docker images | grep shoplite
 ```
 
 **Règle absolue : ne jamais utiliser `docker compose down -v` — cela supprime les volumes PostgreSQL.**
+=======
+```bash
+./scripts/backup.sh
+docker images | grep shoplite
+./scripts/rollback.sh v1.0.0
+./scripts/smoke-test.sh
+```
+
+> Ne jamais utiliser `docker compose down -v`
+>>>>>>> origin/develop
 
 ## Historique des déploiements
 

@@ -14,18 +14,36 @@ function sanitizeUrl(url) {
   }
 }
 
+<<<<<<< HEAD
+=======
+function getLevel(status) {
+  if (status >= 500) return "error";
+  if (status >= 400) return "warn";
+  return "info";
+}
+
+function generateRequestId() {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+}
+
+>>>>>>> origin/develop
 module.exports = function logger(req, res, next) {
   const startedAt = Date.now();
+  const requestId = req.headers["x-request-id"] || generateRequestId();
+
+  req.requestId = requestId;
+  res.setHeader("X-Request-Id", requestId);
 
   res.on("finish", () => {
     console.log(
       JSON.stringify({
-        level: "info",
+        level: getLevel(res.statusCode),
+        request_id: requestId,
         method: req.method,
         path: sanitizeUrl(req.originalUrl),
         status: res.statusCode,
         duration_ms: Date.now() - startedAt,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       })
     );
   });

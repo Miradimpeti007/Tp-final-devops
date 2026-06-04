@@ -25,6 +25,7 @@ Ouvrir : **http://localhost:8080**
 
 ```bash
 curl http://localhost:8080/api/health
+curl http://localhost:8080/api/ready
 curl http://localhost:8080/api/products
 ```
 

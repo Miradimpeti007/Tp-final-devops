@@ -28,6 +28,7 @@ test:     ajout ou modification de tests
 
 ## Gestion des secrets
 
+<<<<<<< HEAD
 ### Règles absolues
 
 - Ne jamais commiter `.env` (il est dans `.gitignore`)
@@ -59,15 +60,42 @@ Avant chaque déploiement, vérifier :
 - [ ] `npm audit` ne remonte aucune vulnérabilité critique
 - [ ] Ports exposés limités au strict nécessaire (seul le port 80 du proxy est exposé)
 - [ ] Aucun secret visible dans les logs (`docker compose logs`)
+=======
+- Ne jamais commiter `.env`
+- Utiliser `.env.example` avec des valeurs fictives (`CHANGEME`)
+- Les vrais secrets sont dans GitHub Secrets (Settings → Secrets)
+
+### Rotation des secrets
+
+| Secret | Rotation conseillée |
+|---|---|
+| `POSTGRES_PASSWORD` | Tous les 90 jours |
+| `DATABASE_URL` | À chaque rotation du mot de passe |
+
+## Checklist sécurité
+
+- [ ] Aucun mot de passe dans le code ou les logs
+- [ ] `.env` absent du dépôt Git
+- [ ] `npm audit` sans vulnérabilité critique
+- [ ] Ports exposés limités au nécessaire
+>>>>>>> origin/develop
 - [ ] Image Docker scannée par Trivy en CI
 
 ## Classement des risques
 
 | Risque | Niveau | Action |
 |---|---|---|
+<<<<<<< HEAD
 | Secret commité dans Git | **Critique** | Révoquer immédiatement + rotation |
 | Vulnérabilité npm CRITICAL | **Critique** | Patcher avant déploiement |
 | Image de base non à jour | **Moyen** | Mettre à jour dans la semaine |
 | Vulnérabilité npm HIGH | **Moyen** | Planifier le correctif |
 | Dépendance obsolète (npm outdated) | **Faible** | Mettre à jour lors du prochain sprint |
 | Port non nécessaire exposé | **Faible** | Supprimer dans la prochaine PR |
+=======
+| Secret commité dans Git | Critique | Révoquer + rotation immédiate |
+| Vulnérabilité npm CRITICAL | Critique | Patcher avant déploiement |
+| Image de base non à jour | Moyen | Mettre à jour dans la semaine |
+| Vulnérabilité npm HIGH | Moyen | Planifier le correctif |
+| Dépendance obsolète | Faible | Mettre à jour au prochain sprint |
+>>>>>>> origin/develop
