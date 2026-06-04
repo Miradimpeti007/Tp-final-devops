@@ -48,3 +48,26 @@ Les secrets sont stockés dans **GitHub Settings → Secrets and variables → A
 2. Mettre à jour le secret dans GitHub (Settings → Secrets)
 3. Redéployer l'application avec `docker compose up -d`
 4. Vérifier `/api/health` pour confirmer la connexion DB
+
+## Checklist sécurité
+
+Avant chaque déploiement, vérifier :
+
+- [ ] Aucun mot de passe ou token dans le code source
+- [ ] `.env` absent du dépôt Git (`git status` ne le montre pas)
+- [ ] `.env.example` contient uniquement des valeurs fictives (`CHANGEME`)
+- [ ] `npm audit` ne remonte aucune vulnérabilité critique
+- [ ] Ports exposés limités au strict nécessaire (seul le port 80 du proxy est exposé)
+- [ ] Aucun secret visible dans les logs (`docker compose logs`)
+- [ ] Image Docker scannée par Trivy en CI
+
+## Classement des risques
+
+| Risque | Niveau | Action |
+|---|---|---|
+| Secret commité dans Git | **Critique** | Révoquer immédiatement + rotation |
+| Vulnérabilité npm CRITICAL | **Critique** | Patcher avant déploiement |
+| Image de base non à jour | **Moyen** | Mettre à jour dans la semaine |
+| Vulnérabilité npm HIGH | **Moyen** | Planifier le correctif |
+| Dépendance obsolète (npm outdated) | **Faible** | Mettre à jour lors du prochain sprint |
+| Port non nécessaire exposé | **Faible** | Supprimer dans la prochaine PR |

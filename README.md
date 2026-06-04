@@ -3,8 +3,6 @@
 [![CI](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/ci.yml/badge.svg)](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/ci.yml)
 [![CD](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/cd.yml/badge.svg)](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/cd.yml)
 
-ShopLite est un projet de base pour un TP final DevOps.
-
 ShopLite est une mini application e-commerce industrialisée avec une chaîne DevOps complète.
 
 ## Environnements
