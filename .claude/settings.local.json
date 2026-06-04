@@ -9,7 +9,12 @@
       "Bash(npm test *)",
       "Bash(npm run *)",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\)[0]; c=d['Config']; print\\('Labels:', c.get\\('Labels'\\)\\); print\\('Env:', c.get\\('Env'\\)\\); print\\('Cmd:', c.get\\('Cmd'\\)\\); print\\('ExposedPorts:', c.get\\('ExposedPorts'\\)\\); print\\('Healthcheck:', d.get\\('Config',{}\\).get\\('Healthcheck'\\)\\)\")",
-      "Bash(git -C /Users/walid/Desktop/Tp-final-devops tag)"
+      "Bash(git -C /Users/walid/Desktop/Tp-final-devops tag)",
+      "Bash(chmod +x /Users/walid/Desktop/Tp-final-devops/scripts/*.sh)",
+      "Bash(sh -n scripts/backup.sh)",
+      "Bash(sh -n scripts/restore-test.sh)",
+      "Bash(sh -n scripts/rollback.sh)",
+      "Bash(sh -n scripts/smoke-test.sh)"
     ]
   }
 }
