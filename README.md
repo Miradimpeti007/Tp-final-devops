@@ -1,74 +1,64 @@
-# ShopLite - Starter TP final DevOps
+# ShopLite - TP final DevOps
 
-ShopLite est un projet de base pour un TP final DevOps.
+[![CI](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/ci.yml/badge.svg)](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/ci.yml)
+[![CD](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/cd.yml/badge.svg)](https://github.com/Miradimpeti007/Tp-final-devops/actions/workflows/cd.yml)
 
-Les etudiants recoivent uniquement ce socle applicatif :
+ShopLite est une mini application e-commerce industrialisée avec une chaîne DevOps complète.
 
-- API Node.js / Express
-- Frontend HTML / CSS / JS
-- Script SQL PostgreSQL
-- Un test de sante minimal
-- Une configuration Docker minimale pour lancer le projet
+## Environnements
 
-Le travail du TP consiste a construire progressivement :
+| Environnement | Port | Branche | Commande |
+|---|---|---|---|
+| **dev** | 8080 | `feature/*` | `docker compose up -d --build` |
+| **staging** | 8081 | `develop` | `docker compose -f docker-compose.yml -f docker-compose.staging.yml up -d --build` |
+| **production** | 8082 | tag `v*` | `docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build` |
 
-- Git propre et strategie de branches
-- Ameliorer les Dockerfile API et frontend
-- Ameliorer docker-compose dev / staging / prod
-- CI/CD GitHub Actions
-- tests automatises
-- logs propres
-- securite container
-- backup PostgreSQL
-- rollback sans perte de donnees
-- documentation professionnelle
-
-## Lancement rapide avec Docker
+## Lancement rapide (dev)
 
 ```bash
+cp .env.example .env
 docker compose up -d --build
 ```
 
-Ouvrir :
-
-```text
-http://localhost:8080
-```
-
-Tester :
+Ouvrir : **http://localhost:8080**
 
 ```bash
 curl http://localhost:8080/api/health
+curl http://localhost:8080/api/ready
 curl http://localhost:8080/api/products
 ```
 
-Arreter sans supprimer les donnees :
-
-```bash
-docker compose down
-```
-
-## Lancement hors Docker pour prise en main
+## Tests
 
 ```bash
 cd api
 npm install
 npm test
-npm start
+npm run test:coverage
+npm run lint
 ```
 
-API :
+## Backup et rollback
 
-```text
-http://localhost:3000/health
-http://localhost:3000/products
+```bash
+./scripts/backup.sh
+./scripts/restore-test.sh
+./scripts/rollback.sh v1.0.0
+./scripts/smoke-test.sh
 ```
 
-Frontend :
+## Arrêter sans supprimer les données
 
-Ouvrir `frontend/src/index.html` dans un navigateur ou le servir avec un serveur statique.
+```bash
+docker compose down
+```
 
-## Important
+> Ne jamais utiliser `docker compose down -v` — cela supprime les volumes PostgreSQL.
 
-Le projet contient maintenant le minimum pour tourner avec Docker.
-Les etudiants doivent l'ameliorer pendant le TP pour atteindre les exigences finales.
+## Stack technique
+
+- API : Node.js / Express
+- Frontend : HTML / CSS / JS (nginx)
+- Base de données : PostgreSQL 16
+- Reverse proxy : nginx
+- CI/CD : GitHub Actions
