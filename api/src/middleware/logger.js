@@ -40,7 +40,7 @@ module.exports = function logger(req, res, next) {
         path: sanitizeUrl(req.originalUrl),
         status: res.statusCode,
         duration_ms: Date.now() - startedAt,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       })
     );
   });

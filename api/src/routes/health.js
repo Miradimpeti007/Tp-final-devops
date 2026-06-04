@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     service: "shoplite-api",
     version: process.env.APP_VERSION || "unknown",
     checks,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 

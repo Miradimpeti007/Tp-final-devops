@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.json({
     name: "ShopLite API",
     version: process.env.APP_VERSION || "unknown",
-    endpoints: ["/health", "/ready", "/products"]
+    endpoints: ["/health", "/ready", "/products"],
   });
 });
 
@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
     JSON.stringify({
       level: "error",
       message: err.message,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     })
   );
   res.status(500).json({ error: "Internal server error" });

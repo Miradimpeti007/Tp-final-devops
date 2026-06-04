@@ -9,8 +9,8 @@ describe("GET /products", () => {
     db.query.mockResolvedValueOnce({
       rows: [
         { id: 1, name: "T-shirt", description: "Basique", price_cents: 1999 },
-        { id: 2, name: "Casquette", description: "Style", price_cents: 1299 }
-      ]
+        { id: 2, name: "Casquette", description: "Style", price_cents: 1299 },
+      ],
     });
     const res = await request(app).get("/products");
     expect(res.status).toBe(200);
