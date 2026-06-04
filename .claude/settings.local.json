@@ -14,7 +14,8 @@
       "Bash(sh -n scripts/backup.sh)",
       "Bash(sh -n scripts/restore-test.sh)",
       "Bash(sh -n scripts/rollback.sh)",
-      "Bash(sh -n scripts/smoke-test.sh)"
+      "Bash(sh -n scripts/smoke-test.sh)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('scripts:', list\\(d['scripts'].keys\\(\\)\\)\\); print\\('jest:', d.get\\('jest',{}\\)\\)\")"
     ]
   }
 }
