@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:moodle.learn.ynov.com)",
+      "Bash(docker build *)",
+      "Bash(docker compose *)",
+      "Bash(git -C /Users/walid/Desktop/Tp-final-devops remote get-url origin)",
+      "Bash(npm install *)",
+      "Bash(npm test *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
