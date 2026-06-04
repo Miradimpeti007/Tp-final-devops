@@ -1,10 +1,10 @@
-# Stage 1 : installation des dépendances de production uniquement
+# Stage 1 : installation des dépendances de production
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
 
-# Stage 2 : image finale légère sans cache npm ni outils de build
+# Stage 2 : image finale légère
 FROM node:20-alpine AS runner
 
 LABEL org.opencontainers.image.title="shoplite-api"
