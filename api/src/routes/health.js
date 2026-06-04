@@ -4,7 +4,11 @@ const db = require("../db");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const checks = { api: "ok", database: "unknown" };
+  const checks = {
+    api: "ok",
+    database: "unknown"
+  };
+
   let status = 200;
 
   try {
@@ -18,7 +22,6 @@ router.get("/", async (req, res) => {
   res.status(status).json({
     status: status === 200 ? "ok" : "error",
     service: "shoplite-api",
-    version: process.env.APP_VERSION || "unknown",
     checks,
     timestamp: new Date().toISOString()
   });
