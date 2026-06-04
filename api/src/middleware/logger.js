@@ -14,6 +14,8 @@ function sanitizeUrl(url) {
   }
 }
 
+<<<<<<< HEAD
+=======
 function getLevel(status) {
   if (status >= 500) return "error";
   if (status >= 400) return "warn";
@@ -24,6 +26,7 @@ function generateRequestId() {
   return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
 }
 
+>>>>>>> origin/develop
 module.exports = function logger(req, res, next) {
   const startedAt = Date.now();
   const requestId = req.headers["x-request-id"] || generateRequestId();

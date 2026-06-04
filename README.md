@@ -17,6 +17,7 @@ ShopLite est une mini application e-commerce industrialisée avec une chaîne De
 
 ```bash
 cp .env.example .env
+# Modifier .env avec vos valeurs
 docker compose up -d --build
 ```
 
@@ -28,6 +29,14 @@ curl http://localhost:8080/api/ready
 curl http://localhost:8080/api/products
 ```
 
+## Lancement staging
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.staging.yml up -d --build
+```
+
+Ouvrir : **http://localhost:8081**
+
 ## Tests
 
 ```bash
@@ -38,22 +47,12 @@ npm run test:coverage
 npm run lint
 ```
 
-## Backup et rollback
-
-```bash
-./scripts/backup.sh
-./scripts/restore-test.sh
-./scripts/rollback.sh v1.0.0
-./scripts/smoke-test.sh
-```
-
 ## Arrêter sans supprimer les données
 
 ```bash
 docker compose down
+# Ne jamais utiliser docker compose down -v (supprime les données PostgreSQL)
 ```
-
-> Ne jamais utiliser `docker compose down -v` — cela supprime les volumes PostgreSQL.
 
 ## Stack technique
 

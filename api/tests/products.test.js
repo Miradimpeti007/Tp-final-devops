@@ -1,6 +1,12 @@
 const request = require("supertest");
 
+<<<<<<< HEAD
+jest.mock("../src/db", () => ({
+  query: jest.fn()
+}));
+=======
 jest.mock("../src/db", () => ({ query: jest.fn() }));
+>>>>>>> origin/develop
 const db = require("../src/db");
 const app = require("../src/app");
 
@@ -9,9 +15,16 @@ describe("GET /products", () => {
     db.query.mockResolvedValueOnce({
       rows: [
         { id: 1, name: "T-shirt", description: "Basique", price_cents: 1999 },
+<<<<<<< HEAD
+        { id: 2, name: "Casquette", description: "Style", price_cents: 1299 }
+      ]
+    });
+
+=======
         { id: 2, name: "Casquette", description: "Style", price_cents: 1299 },
       ],
     });
+>>>>>>> origin/develop
     const res = await request(app).get("/products");
     expect(res.status).toBe(200);
     expect(res.body.source).toBe("database");
