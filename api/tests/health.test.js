@@ -1,12 +1,6 @@
 const request = require("supertest");
 
-<<<<<<< HEAD
-jest.mock("../src/db", () => ({
-  query: jest.fn()
-}));
-=======
 jest.mock("../src/db", () => ({ query: jest.fn() }));
->>>>>>> origin/develop
 const db = require("../src/db");
 const app = require("../src/app");
 
@@ -25,11 +19,8 @@ describe("GET /health", () => {
     expect(res.status).toBe(200);
     expect(res.body.status).toBe("ok");
     expect(res.body.checks.database).toBe("ok");
-<<<<<<< HEAD
-=======
     expect(res.body).toHaveProperty("version");
     expect(res.body).toHaveProperty("timestamp");
->>>>>>> origin/develop
   });
 
   it("retourne 503 quand la DB est indisponible", async () => {
@@ -40,8 +31,6 @@ describe("GET /health", () => {
   });
 });
 
-<<<<<<< HEAD
-=======
 describe("GET /ready", () => {
   it("retourne ready:true quand la DB est disponible", async () => {
     db.query.mockResolvedValueOnce({ rows: [{ "?column?": 1 }] });
@@ -58,7 +47,6 @@ describe("GET /ready", () => {
   });
 });
 
->>>>>>> origin/develop
 describe("Routes inconnues", () => {
   it("retourne 404 sur une route inexistante", async () => {
     const res = await request(app).get("/route-inconnue");

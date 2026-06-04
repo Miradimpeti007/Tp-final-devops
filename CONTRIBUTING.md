@@ -28,39 +28,6 @@ test:     ajout ou modification de tests
 
 ## Gestion des secrets
 
-<<<<<<< HEAD
-### Règles absolues
-
-- Ne jamais commiter `.env` (il est dans `.gitignore`)
-- Ne jamais écrire un vrai mot de passe dans le code, les logs ou le Dockerfile
-- Utiliser `.env.example` avec des valeurs fictives (`CHANGEME`)
-
-### GitHub Secrets — Rotation
-
-Les secrets sont stockés dans **GitHub Settings → Secrets and variables → Actions**.
-
-| Secret | Environnement | Rotation conseillée |
-|---|---|---|
-| `POSTGRES_PASSWORD` | staging, production | Tous les 90 jours |
-| `DATABASE_URL` | staging, production | À chaque rotation du mot de passe |
-
-**Procédure de rotation :**
-1. Générer un nouveau mot de passe fort
-2. Mettre à jour le secret dans GitHub (Settings → Secrets)
-3. Redéployer l'application avec `docker compose up -d`
-4. Vérifier `/api/health` pour confirmer la connexion DB
-
-## Checklist sécurité
-
-Avant chaque déploiement, vérifier :
-
-- [ ] Aucun mot de passe ou token dans le code source
-- [ ] `.env` absent du dépôt Git (`git status` ne le montre pas)
-- [ ] `.env.example` contient uniquement des valeurs fictives (`CHANGEME`)
-- [ ] `npm audit` ne remonte aucune vulnérabilité critique
-- [ ] Ports exposés limités au strict nécessaire (seul le port 80 du proxy est exposé)
-- [ ] Aucun secret visible dans les logs (`docker compose logs`)
-=======
 - Ne jamais commiter `.env`
 - Utiliser `.env.example` avec des valeurs fictives (`CHANGEME`)
 - Les vrais secrets sont dans GitHub Secrets (Settings → Secrets)
@@ -78,24 +45,14 @@ Avant chaque déploiement, vérifier :
 - [ ] `.env` absent du dépôt Git
 - [ ] `npm audit` sans vulnérabilité critique
 - [ ] Ports exposés limités au nécessaire
->>>>>>> origin/develop
 - [ ] Image Docker scannée par Trivy en CI
 
 ## Classement des risques
 
 | Risque | Niveau | Action |
 |---|---|---|
-<<<<<<< HEAD
-| Secret commité dans Git | **Critique** | Révoquer immédiatement + rotation |
-| Vulnérabilité npm CRITICAL | **Critique** | Patcher avant déploiement |
-| Image de base non à jour | **Moyen** | Mettre à jour dans la semaine |
-| Vulnérabilité npm HIGH | **Moyen** | Planifier le correctif |
-| Dépendance obsolète (npm outdated) | **Faible** | Mettre à jour lors du prochain sprint |
-| Port non nécessaire exposé | **Faible** | Supprimer dans la prochaine PR |
-=======
 | Secret commité dans Git | Critique | Révoquer + rotation immédiate |
 | Vulnérabilité npm CRITICAL | Critique | Patcher avant déploiement |
 | Image de base non à jour | Moyen | Mettre à jour dans la semaine |
 | Vulnérabilité npm HIGH | Moyen | Planifier le correctif |
 | Dépendance obsolète | Faible | Mettre à jour au prochain sprint |
->>>>>>> origin/develop
