@@ -1,13 +1,50 @@
-name: CD starter a completer
+name: CD
 
 on:
+  push:
+    branches: [develop]
+    tags: ["v*"]
   workflow_dispatch:
 
 jobs:
-  consigne:
+  deploy-staging:
+    name: Déploiement staging
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
     steps:
-      - name: Consigne
+      - uses: actions/checkout@v4
+
+      - name: Build image staging
         run: |
-          echo "Ce workflow est volontairement minimal."
-          echo "Les etudiants doivent ajouter staging, production simulee, smoke test et rollback."
+          docker build -t shoplite-api:staging ./api
+          docker build -t shoplite-frontend:staging ./frontend
+
+      - name: Résumé du déploiement staging
+        run: |
+          echo "Version déployée : staging (${{ github.sha }})"
+          echo "Commande locale : docker compose -f docker-compose.yml -f docker-compose.staging.yml up -d --build"
+          echo "URL staging : http://localhost:8081"
+
+  deploy-production:
+    name: Déploiement production
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extraire la version depuis le tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Build image production
+        run: |
+          docker build -t shoplite-api:${{ steps.version.outputs.VERSION }} ./api
+          docker build -t shoplite-frontend:${{ steps.version.outputs.VERSION }} ./frontend
+
+      - name: Résumé du déploiement production
+        run: |
+          echo "Version déployée : ${{ steps.version.outputs.VERSION }}"
+          echo "Commande locale : APP_VERSION=${{ steps.version.outputs.VERSION }} docker compose up -d --build"
+          echo "URL production simulée : http://localhost:8080"
