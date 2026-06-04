@@ -1,5 +1,9 @@
 FROM node:20-alpine
 
+LABEL org.opencontainers.image.title="shoplite-api"
+LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.description="ShopLite API - TP Final DevOps"
+
 WORKDIR /app
 
 ENV NODE_ENV=production

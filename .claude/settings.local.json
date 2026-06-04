@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:moodle.learn.ynov.com)",
+      "Bash(docker build *)",
+      "Bash(docker compose *)",
+      "Bash(git -C /Users/walid/Desktop/Tp-final-devops remote get-url origin)",
+      "Bash(npm install *)",
+      "Bash(npm test *)",
+      "Bash(npm run *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\)[0]; c=d['Config']; print\\('Labels:', c.get\\('Labels'\\)\\); print\\('Env:', c.get\\('Env'\\)\\); print\\('Cmd:', c.get\\('Cmd'\\)\\); print\\('ExposedPorts:', c.get\\('ExposedPorts'\\)\\); print\\('Healthcheck:', d.get\\('Config',{}\\).get\\('Healthcheck'\\)\\)\")"
+    ]
+  }
+}
